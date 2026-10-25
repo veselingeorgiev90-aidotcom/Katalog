@@ -207,7 +207,7 @@ html,body{overscroll-behavior-x:none}
 </div></section>
 
 <section class="page"><div class="in">
-<video class="ph" poster="img/398584.jpg" muted playsinline loop autoplay preload="metadata" aria-label="Видео на апартамента, код 398584"><source src="img/398584.mp4" type="video/mp4"><source src="img/398584.webm" type="video/webm"></video>
+<video class="ph vert" poster="img/398584.jpg" muted playsinline loop autoplay preload="metadata" aria-label="Видео на апартамента, код 398584" data-sound="1"><source src="img/398584.mp4" type="video/mp4"><source src="img/398584.webm" type="video/webm"></video>
 <h2>Двустаен, южен, светъл</h2>
 <p class="price">46 000 €</p>
 <p class="sub">958 €/м² · Добрич, район Енергоразпределение</p>
@@ -1038,7 +1038,7 @@ vs.forEach(function(v){if(!v.dataset.sound)return;var w=document.createElement('
  b.addEventListener('click',function(e){e.stopPropagation();v.muted=!v.muted;if(!v.muted){v.volume=0.6;var p=v.play();if(p&&p.catch)p.catch(function(){})}
   b.textContent=v.muted?'🔇 Пусни звука':'🔊 Спри звука';b.setAttribute('aria-label',v.muted?'Включи звука':'Спри звука')})});})();
 </script>
-<style>.vwrap{position:relative}.vwrap .ph{margin-bottom:0}.vwrap{margin-bottom:22px}.sndbtn{position:absolute;right:10px;bottom:10px;z-index:5;border:0;border-radius:999px;padding:8px 14px;font:600 14px/1 system-ui,sans-serif;background:rgba(0,0,0,.6);color:#fff;cursor:pointer;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}.sndbtn:focus-visible{outline:2px solid #fff;outline-offset:2px}</style>
+<style>.ph.vert{height:min(62vh,560px)!important;width:auto!important;max-width:100%;aspect-ratio:9/16;object-fit:cover;margin:0 auto;background:#000!important}.vwrap:has(.vert){width:fit-content;max-width:100%;margin:0 auto 22px}.vwrap{position:relative}.vwrap .ph{margin-bottom:0}.vwrap{margin-bottom:22px}.sndbtn{position:absolute;right:10px;bottom:10px;z-index:5;border:0;border-radius:999px;padding:8px 14px;font:600 14px/1 system-ui,sans-serif;background:rgba(0,0,0,.6);color:#fff;cursor:pointer;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}.sndbtn:focus-visible{outline:2px solid #fff;outline-offset:2px}</style>
 </body>
 </html>
 

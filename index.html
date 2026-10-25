@@ -570,7 +570,7 @@ html,body{overscroll-behavior-x:none}
 </div></section>
 
 <section class="page"><div class="in">
-<video class="ph" poster="img/376883.jpg" muted playsinline loop autoplay preload="metadata" aria-label="Видео на имота, код 376883"><source src="img/376883.mp4" type="video/mp4"><source src="img/376883.webm" type="video/webm"></video>
+<video class="ph" poster="img/376883.jpg" muted playsinline loop autoplay preload="metadata" aria-label="Видео на имота, код 376883" data-sound="1"><source src="img/376883.mp4" type="video/mp4"><source src="img/376883.webm" type="video/webm"></video>
 <h2>Многостаен в Техникумите, 124 м²</h2>
 <p class="price">290 000 €</p>
 <p class="sub">2 339 €/м² · Варна, кв. Техникумите</p>
@@ -1029,9 +1029,16 @@ document.addEventListener('keydown',function(e){if(e.target.closest&&e.target.cl
 (function(){var vs=document.querySelectorAll('video.ph');if(!vs.length||!('IntersectionObserver' in window))return;
 var m=document.getElementById('mag');
 var io=new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;
- if(e.intersectionRatio>0.6){v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause()})},{root:m,threshold:[0,0.6,1]});
-vs.forEach(function(v){v.muted=true;io.observe(v)});})();
+ if(e.intersectionRatio>0.6){var p=v.play();if(p&&p.catch)p.catch(function(){})}else v.pause()})},{root:m,threshold:[0,0.6,1]});
+vs.forEach(function(v){v.muted=true;io.observe(v)});
+/* sound toggle for videos that have audio */
+vs.forEach(function(v){if(!v.dataset.sound)return;var w=document.createElement('div');w.className='vwrap';v.parentNode.insertBefore(w,v);w.appendChild(v);
+ var b=document.createElement('button');b.type='button';b.className='sndbtn';b.setAttribute('aria-label','Включи звука');b.textContent='🔇 Пусни звука';w.appendChild(b);
+ ['pointerdown','touchstart','mousedown'].forEach(function(t){b.addEventListener(t,function(e){e.stopPropagation()},{passive:true})});
+ b.addEventListener('click',function(e){e.stopPropagation();v.muted=!v.muted;if(!v.muted){v.volume=0.6;var p=v.play();if(p&&p.catch)p.catch(function(){})}
+  b.textContent=v.muted?'🔇 Пусни звука':'🔊 Спри звука';b.setAttribute('aria-label',v.muted?'Включи звука':'Спри звука')})});})();
 </script>
+<style>.vwrap{position:relative}.vwrap .ph{margin-bottom:0}.vwrap{margin-bottom:22px}.sndbtn{position:absolute;right:10px;bottom:10px;z-index:5;border:0;border-radius:999px;padding:8px 14px;font:600 14px/1 system-ui,sans-serif;background:rgba(0,0,0,.6);color:#fff;cursor:pointer;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}.sndbtn:focus-visible{outline:2px solid #fff;outline-offset:2px}</style>
 </body>
 </html>
 
